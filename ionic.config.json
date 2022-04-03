@@ -1,7 +1,8 @@
 {
   "name": "Labtest2_JaiKumar",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

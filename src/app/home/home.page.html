@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      LocTrack
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,41 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>LocTrack</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="container">
+    <div>
+      <h5>Your most recent location is:</h5>
+      <p>
+        Time Stamp: {{ timestamp | date: 'yyyy-MM-dd hh:mm:ss' }}
+        <br>
+        Latitude: {{ lat }}
+        <br>
+        Longitude: {{ lon }}
+      </p>
+      <ion-button (click)="getLoc()">Get Current Location</ion-button>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-list>
+      <ion-item *ngFor="let item of locationList; let ind = index">
+        <ion-label>
+          Location Captured at:<br>
+          {{ item.timestamp | date: "yyyy-MM-dd hh:mm:ss"}}
+          <br>
+          Latitude:<br>
+          {{ item.latitude }}
+          <br>
+          Longitude:<br>
+          {{ item.longitude }}
+          <br>
+        </ion-label>
+        <div class="item-note" slot="end">
+          <ion-button color="danger" (click)="removeLoc(ind)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
